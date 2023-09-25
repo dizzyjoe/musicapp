@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<body>
+<div id="main">
+  <h1>Music App!</h1>
+  <div id="songs">
+    <h2>Songs</h2>
+    <div id="song_1">
+      <h3>The Beatles - Yesterday <button type="submit" id="edit-button" data-song="1">New Comment</button></h3>
+      <div id="comments">
+        <p> This song is amazing!</p>
+        <p> One of my all-time favorites!</p>
+      </div>
+    </div>
+    <div id="song_2">
+      <h3>Drake - Hotline Bling <button type="submit" id="edit-button" data-song="2">New Comment</button></h3>
+      <div id="comments">
+        <p> Love the catchy beat!</p>
+        <p> Drake's best work.</p>
+      </div>
+    </div>
+    <div id="song_3">
+      <h3>Kendrick Lamar - HUMBLE. <button type="submit" id="edit-button" data-song="3">New Comment</button></h3>
+      <div id="comments">
+        <p> Kendrick's lyrics are fire!</p>
+        <p> Such a powerful song.</p>
+      </div>
+    </div>
+    <div id="song_4">
+      <h3>Adele - Hello <button type="submit" id="edit-button" data-song="4">New Comment</button></h3>
+      <div id="comments">
+        <p> Adele's voice is angelic.</p>
+        <p> Hits you right in the feels.</p>
+      </div>
+    </div>
+    <div id="song_5">
+      <h3>Taylor Swift - Love Story <button type="submit" id="edit-button" data-song="5">New Comment</button></h3>
+      <div id="comments">
+        <p>Classic Taylor!</p>
+        <p>This song never gets old.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    // Function to handle the click event on the "New Comment" button
+    function handleNewCommentButtonClick(event) {
+      const songId = event.target.getAttribute("data-song");
+      // Redirect to the add-comment.html page with the selected song ID as a query parameter
+      window.location.href = `comments.ejs?songId=${songId}`;
+    }
+  
+    // Add event listeners to all "New Comment" buttons
+    const newCommentButtons = document.querySelectorAll('#edit-button');
+    newCommentButtons.forEach(button => {
+      button.addEventListener('click', handleNewCommentButtonClick);
+    });
+  </script>
+
+
+<!-- Music Trivia Generator -->
+<div id="trivia">
+    <h2>Music Trivia Generator</h2>
+    <p id="trivia-fact">Trivia fact will appear here</p>
+    <button id="generate-trivia">Generate Trivia Fact</button>
+  </div>
+</div>
+
+<script>
+  // Array of random music trivia facts
+  const triviaFacts = [
+    "The first music video ever played on MTV was 'Video Killed the Radio Star' by The Buggles.",
+    "The longest officially released song is 'The Rise and Fall of Bossanova' by PC III.",
+    "Mozart was known to be a pet lover, and he had a pet starling bird that could sing part of his Piano Concerto in G Major.",
+    "The Beatles used the word 'love' 613 times in their songs.",
+    "The first compact disc was created in 1965, but it wasn't widely adopted until the early 1980s.",
+    "Michael Jackson's 'Thriller' album is the best-selling album of all time.",
+    "Beethoven composed many of his greatest works while he was completely deaf.",
+    "Elvis Presley made 31 movies during his career as a musician and actor.",
+    "Bob Marley's last words to his son Ziggy were 'Money can't buy life.'",
+    "The world's largest music festival is the Donauinselfest in Vienna, with over three million attendees."
+  ];
+
+  // Function to generate a random trivia fact
+  function generateTriviaFact() {
+    const randomIndex = Math.floor(Math.random() * triviaFacts.length);
+    const triviaFact = triviaFacts[randomIndex];
+    document.getElementById("trivia-fact").textContent = triviaFact;
+  }
+
+  // Event listener for the "Generate Trivia Fact" button
+  document.getElementById("generate-trivia").addEventListener("click", generateTriviaFact);
+
+
+</script>
+</body>
+</html>
+
+
+
+</body>
 </html>

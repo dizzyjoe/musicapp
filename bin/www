@@ -5,7 +5,7 @@
  */
 
 const app = require('../server');
-const debug = require('debug')('songs:server');
+const debug = require('debug')('musicapp:server');
 const http = require('http');
 
 /**
